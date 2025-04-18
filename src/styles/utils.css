@@ -18,3 +18,20 @@
     --text-color: #171417;
     --light-color: #FEFEFE;
 }
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    padding: 1rem 3rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    flex: 1 0 auto;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}

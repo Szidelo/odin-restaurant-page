@@ -81,12 +81,18 @@ nav ul li button:hover, nav ul li button.active {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    text-align: center;
     max-width: 1440px;
     margin: 0 auto;
+}
+
+.page-home__content, .page-home__image {
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .page-home__image img{
     border-radius: 50%;
     box-shadow: 0 0 200px 20px rgba(0, 0, 0, 1);
 }
+
