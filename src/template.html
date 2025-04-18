@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant page</title>
 </head>
+
 <body>
-    <h1>Hello</h1>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <a href="/">odin table</a>
+            </div>
+            <ul>
+                <li><button class="active">home</button></li>
+                <li><button>about</button></li>
+                <li><button>menu</button></li>
+                <li><button>contact</button></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="content">
+        <div class="page-home">
+            <div class="container">
+                <div class="page-home__content">
+                    <h1>Welcome to our restaurant</h1>
+                    <p>We serve the best food in town</p>
+                    <button class="btn">See our menu</button>
+                </div>
+                <div class="page-home__image">
+                    <img src="./assets/images/img-home.png" alt="Restaurant image">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
