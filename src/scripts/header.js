@@ -1,5 +1,4 @@
 import "../styles/header/header.css";
-export const greetingsheader = "Hello World!";
 
 const renderHeader = () => {
 	const items = ["Home", "About", "Menu", "Contact"];
@@ -27,22 +26,18 @@ const renderHeader = () => {
 			btn.classList.add("active");
 		}
 
-		btn.addEventListener("click", (e) => {
-			if (e.target.tagName === "BUTTON") {
-				changeActive(e);
-			}
-		});
+		btn.addEventListener("click", changeActive);
 	});
 
 	nav.appendChild(ul);
 
 	header.appendChild(nav);
 
-	document.querySelector("#content").prepend(header);
+	document.querySelector("body").prepend(header);
 };
 
 const changeActive = (e) => {
-	const buttons = document.querySelectorAll("button");
+	const buttons = document.querySelectorAll("header button");
 	buttons.forEach((button) => {
 		button.classList.remove("active");
 	});
