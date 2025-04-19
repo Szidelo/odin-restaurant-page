@@ -36,6 +36,7 @@ const renderHome = () => {
 	imageDiv.classList.add("page-home__image");
 
 	const img = document.createElement("img");
+	img.setAttribute("loading", "lazy");
 	img.src = image;
 	img.alt = "Restaurant image";
 

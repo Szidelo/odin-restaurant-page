@@ -1,8 +1,10 @@
 import "../styles/header/header.css";
 
-const renderHeader = () => {
-	const items = ["Home", "About", "Menu", "Contact"];
+import { renderHome } from "../scripts/home.js";
+import { renderMenu } from "../scripts/menu.js";
 
+const items = ["Home", "About", "Menu", "Contact"];
+const renderHeader = () => {
 	const header = document.createElement("header");
 	const nav = document.createElement("nav");
 	const ul = document.createElement("ul");
@@ -22,7 +24,7 @@ const renderHeader = () => {
 		li.appendChild(btn);
 		ul.appendChild(li);
 
-		if (i === 0) {
+		if (i === 2) {
 			btn.classList.add("active");
 		}
 
@@ -41,7 +43,24 @@ const changeActive = (e) => {
 	buttons.forEach((button) => {
 		button.classList.remove("active");
 	});
+
 	e.target.classList.add("active");
+	changePage(e);
+};
+
+const changePage = (e) => {
+	const page = e.target.textContent.trim().toLowerCase();
+	const contentDiv = document.querySelector("#content");
+	contentDiv.innerHTML = "";
+	console.log(page);
+	switch (page) {
+		case "home":
+			renderHome();
+			break;
+		case "menu":
+			renderMenu();
+			break;
+	}
 };
 
 export { renderHeader };
