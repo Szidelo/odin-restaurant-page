@@ -5,8 +5,8 @@ export const FOOD_CATEGORIES = {
 };
 
 export const NAV_ITEMS = {
-	HOME: "Home",
-	ABOUT: "About",
-	MENU: "Menu",
-	CONTACT: "Contact",
+	HOME: "home",
+	ABOUT: "about",
+	MENU: "menu",
+	CONTACT: "contact",
 };

@@ -1,6 +1,7 @@
 import "../styles/home/home.css";
 import image from "../assets/images/dish-1.PNG";
 import { renderMenu } from "./menu";
+import { createElementWithClass } from "../utils/helpers.js";
 
 const renderHome = () => {
 	const content = document.querySelector("#content");
@@ -49,7 +50,7 @@ const createImageSection = () => {
 	img.src = image;
 	img.alt = "Restaurant image";
 	img.loading = "lazy";
-	img.classList.add("fade-in-opacity");
+	img.classList.add("fade-in-opacity-delayed");
 
 	imageDiv.appendChild(img);
 	return imageDiv;
@@ -67,12 +68,6 @@ const handleMenuButtonClick = () => {
 	const content = document.querySelector("#content");
 	content.innerHTML = "";
 	renderMenu();
-};
-
-const createElementWithClass = (tag, className) => {
-	const el = document.createElement(tag);
-	el.classList.add(className);
-	return el;
 };
 
 export { renderHome };

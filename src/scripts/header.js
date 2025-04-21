@@ -3,6 +3,8 @@ import "../styles/header/header.css";
 import { renderHome } from "../scripts/home.js";
 import { renderMenu } from "../scripts/menu.js";
 import { NAV_ITEMS } from "../utils/constants.js";
+import { renderContact } from "./contact.js";
+import { renderAbout } from "./about.js";
 
 const renderHeader = () => {
 	const header = document.createElement("header");
@@ -49,15 +51,22 @@ const changeActive = (e) => {
 };
 
 const changePage = (e) => {
+	const { HOME, ABOUT, MENU, CONTACT } = NAV_ITEMS;
 	const page = e.target.textContent.trim().toLowerCase();
 	const contentDiv = document.querySelector("#content");
 	contentDiv.innerHTML = "";
 	switch (page) {
-		case "home":
+		case HOME:
 			renderHome();
 			break;
-		case "menu":
+		case ABOUT:
+			renderAbout();
+			break;
+		case MENU:
 			renderMenu();
+			break;
+		case CONTACT:
+			renderContact();
 			break;
 	}
 };
