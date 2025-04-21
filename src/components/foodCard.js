@@ -1,4 +1,5 @@
 import { createElementWithClass } from "../utils/helpers";
+import { createFoodModal } from "./foodItemModal";
 
 const createFoodCard = (foodItem) => {
 	const { id, name, price, image, description, category } = foodItem;
@@ -14,6 +15,10 @@ const createFoodCard = (foodItem) => {
 
 	const contentSection = createContentSection(name, price, description);
 	card.appendChild(contentSection);
+
+	card.addEventListener("click", () => {
+		handleModal(foodItem);
+	});
 
 	return card;
 };
@@ -49,6 +54,13 @@ const createContentSection = (name, price, description) => {
 	contentDiv.appendChild(descriptionText);
 
 	return contentDiv;
+};
+
+const handleModal = (foodItem) => {
+	const modal = createFoodModal(foodItem);
+	const div = document.querySelector("#content");
+	div.append(modal);
+	modal.showModal();
 };
 
 export default createFoodCard;

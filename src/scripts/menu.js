@@ -5,6 +5,7 @@ import silverwareIcon from "../assets/icons/silverware-fork-knife.svg";
 import createListByCategory from "../components/categoryList.js";
 import { FOOD } from "../utils/food";
 import { createPageBanner } from "../components/pageBanner.js";
+import { createElementWithClass } from "../utils/helpers.js";
 
 const items = [
 	{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
@@ -28,11 +29,8 @@ const renderMenu = () => {
 };
 
 const createMenuHeader = () => {
-	const header = document.createElement("div");
-	header.classList.add("menu-header");
-
-	const sectionTitle = document.createElement("h4");
-	sectionTitle.classList.add("section-title");
+	const header = createElementWithClass("div", "menu-header");
+	const sectionTitle = createElementWithClass("h4", "section-title");
 	sectionTitle.textContent = "Food Menu";
 
 	const heading = document.createElement("h2");
@@ -44,8 +42,7 @@ const createMenuHeader = () => {
 };
 
 const createMenuContent = () => {
-	const content = document.createElement("div");
-	content.classList.add("menu-content");
+	const content = createElementWithClass("div", "menu-content");
 
 	const ul = document.createElement("ul");
 
@@ -55,8 +52,7 @@ const createMenuContent = () => {
 		ul.appendChild(li);
 	});
 
-	const listContainer = document.createElement("div");
-	listContainer.classList.add("menu-list");
+	const listContainer = createElementWithClass("div", "menu-list");
 	const initialList = createListByCategory(items[0].category, FOOD);
 
 	listContainer.appendChild(initialList);
@@ -69,9 +65,7 @@ const createMenuContent = () => {
 
 const createMenuItem = (item) => {
 	const li = document.createElement("li");
-
-	const iconDiv = document.createElement("div");
-	iconDiv.classList.add("icon-div");
+	const iconDiv = createElementWithClass("div", "icon-div");
 	fetchAndInlineSVG(item.icon, iconDiv);
 
 	const textDiv = document.createElement("div");
