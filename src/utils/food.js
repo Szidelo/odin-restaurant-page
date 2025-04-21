@@ -1,10 +1,5 @@
 import { getImage } from "./helpers";
-
-export const FOOD_CATEGORIES = {
-	BREAKFAST: "Breakfast",
-	LUNCH: "Lunch",
-	DINNER: "Dinner",
-};
+import { FOOD_CATEGORIES } from "./constants.js";
 
 export const FOOD = [
 	// breakfast
@@ -88,7 +83,7 @@ export const FOOD = [
 		price: 8.99,
 		image: getImage("pizza"),
 		description: "Classic cheese pizza with tomato sauce.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 11,
@@ -96,7 +91,7 @@ export const FOOD = [
 		price: 7.49,
 		image: getImage("caesar-salad"),
 		description: "Romaine, parmesan, croutons, and Caesar dressing.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 12,
@@ -104,7 +99,7 @@ export const FOOD = [
 		price: 6.99,
 		image: getImage("club-sandwich"),
 		description: "Turkey, bacon, lettuce, and tomato on toast.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 13,
@@ -112,7 +107,7 @@ export const FOOD = [
 		price: 7.29,
 		image: getImage("chicken-wrap"),
 		description: "Grilled chicken wrap with fresh veggies.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 14,
@@ -120,7 +115,7 @@ export const FOOD = [
 		price: 9.49,
 		image: getImage("burger"),
 		description: "Beef burger with lettuce, tomato, and cheese.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 15,
@@ -128,7 +123,7 @@ export const FOOD = [
 		price: 4.99,
 		image: getImage("grilled-cheese"),
 		description: "Melted cheese sandwich on sourdough.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 16,
@@ -136,7 +131,7 @@ export const FOOD = [
 		price: 6.79,
 		image: getImage("tuna-salad"),
 		description: "Tuna, mayo, celery, and greens.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 17,
@@ -144,7 +139,7 @@ export const FOOD = [
 		price: 12.99,
 		image: getImage("roasted-boar-feast"),
 		description: "Succulent wild boar roasted over an open flame, served with root vegetables and dark rye bread.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 	{
 		id: 18,
@@ -153,7 +148,7 @@ export const FOOD = [
 		image: getImage("root-harvest-bowl"),
 		description:
 			"A warm bowl of roasted carrots, parsnips, beets, and turnips, drizzled with honey-thyme glaze and served with barley.",
-		category: FOOD_CATEGORIES.LUNCH,
+		category: FOOD_CATEGORIES.LAUNCH,
 	},
 
 	// dinner

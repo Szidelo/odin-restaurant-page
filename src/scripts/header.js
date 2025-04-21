@@ -2,8 +2,8 @@ import "../styles/header/header.css";
 
 import { renderHome } from "../scripts/home.js";
 import { renderMenu } from "../scripts/menu.js";
+import { NAV_ITEMS } from "../utils/constants.js";
 
-const items = ["Home", "About", "Menu", "Contact"];
 const renderHeader = () => {
 	const header = document.createElement("header");
 	const nav = document.createElement("nav");
@@ -17,7 +17,7 @@ const renderHeader = () => {
 	logoContainer.appendChild(logo);
 	nav.appendChild(logoContainer);
 
-	items.forEach((item, i) => {
+	Object.values(NAV_ITEMS).forEach((item, i) => {
 		const li = document.createElement("li");
 		const btn = document.createElement("button");
 		btn.textContent = item;
@@ -52,7 +52,6 @@ const changePage = (e) => {
 	const page = e.target.textContent.trim().toLowerCase();
 	const contentDiv = document.querySelector("#content");
 	contentDiv.innerHTML = "";
-	console.log(page);
 	switch (page) {
 		case "home":
 			renderHome();
@@ -63,4 +62,4 @@ const changePage = (e) => {
 	}
 };
 
-export { renderHeader };
+export { renderHeader, changePage };

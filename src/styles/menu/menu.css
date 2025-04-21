@@ -1,0 +1,187 @@
+.page-menu {
+	display: flex;
+	flex-direction: column;
+	max-width: 1440px;
+	margin: 4rem auto;
+}
+
+.menu-header {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.section-title {
+	position: relative;
+	font-family: "Pacifico", cursive;
+	color: var(--accent-color);
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+.section-title::before {
+	position: absolute;
+	content: "";
+	width: 45px;
+	height: 2px;
+	top: 50%;
+	left: -55px;
+	margin-top: -1px;
+	background: var(--accent-color);
+}
+
+.section-title::after {
+	position: absolute;
+	content: "";
+	width: 45px;
+	height: 2px;
+	top: 50%;
+	right: -55px;
+	margin-top: -1px;
+	background: var(--accent-color);
+}
+
+.menu-header h2 {
+	font-size: 3rem;
+	color: var(--primary-color);
+}
+
+.menu-content {
+	display: flex;
+	flex-direction: column;
+	max-width: 1440px;
+}
+
+.menu-content ul {
+	align-self: center;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.menu-content ul li {
+	margin: 0 1rem;
+	padding: 1rem 0;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	display: flex;
+	user-select: none;
+}
+
+.menu-content ul li.active {
+	border-color: var(--accent-color);
+}
+
+.menu-content ul li .icon-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: var(--light-color);
+}
+
+.menu-content ul li .icon-div svg {
+	fill: var(--accent-color);
+	font-size: 3rem;
+	margin-right: 0.5rem;
+}
+
+.menu-content ul li div h5 {
+	color: var(--grey-color);
+	font-size: 0.875rem;
+	font-weight: 400;
+	font-family: "Heebo", sans-serif;
+}
+
+.menu-content ul li div h3 {
+	color: var(--text-color);
+	font-size: 1rem;
+	font-weight: 800 !important;
+}
+
+.menu-list {
+	margin-top: 2rem;
+	width: 100%;
+}
+
+.category-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	width: 100%;
+}
+
+.food-card {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	padding: 1rem;
+	cursor: pointer;
+}
+
+.food-card:hover {
+	background-color: var(--light-color);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease-in-out;
+}
+
+.food-card .food-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 100%;
+	height: 100%;
+	flex: 1 1 auto;
+}
+
+.food-card .food-content .title-and-price {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.food-card .food-content .title-and-price h3,
+.food-card .food-content .title-and-price p {
+	font-size: 1.25rem !important;
+	font-weight: 800 !important;
+	font-family: "Nunito", sans-serif !important;
+}
+
+.food-card .food-content .title-and-price h3 {
+	color: var(--primary-color);
+}
+
+.food-card .food-content .title-and-price p {
+	color: var(--accent-color);
+}
+
+.food-image img {
+	width: 6rem;
+	height: 6rem;
+	border-radius: 0.25rem;
+	object-fit: cover;
+}
+
+@media (max-width: 768px) {
+	.menu-header h2 {
+		font-size: 2rem;
+		text-align: center;
+	}
+	.section-title h2 {
+		font-size: 2rem;
+		text-align: center;
+	}
+
+	.category-grid {
+		grid-template-columns: 1fr;
+	}
+	.food-card .food-content .title-and-price h3,
+	.food-card .food-content .title-and-price p {
+		font-size: 1rem !important;
+	}
+}

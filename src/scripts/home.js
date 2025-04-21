@@ -4,15 +4,24 @@ import { renderMenu } from "./menu";
 
 const renderHome = () => {
 	const content = document.querySelector("#content");
+	content.innerHTML = "";
 
-	const pageHome = document.createElement("div");
-	pageHome.classList.add("page-home");
+	const pageHome = createElementWithClass("div", "page-home");
+	const container = createElementWithClass("div", "container");
 
-	const container = document.createElement("div");
-	container.classList.add("container");
+	const contentSection = createHomeContentSection();
+	const imageSection = createImageSection();
 
-	const contentDiv = document.createElement("div");
-	contentDiv.classList.add("page-home__content");
+	container.appendChild(contentSection);
+	container.appendChild(imageSection);
+	pageHome.appendChild(container);
+	content.appendChild(pageHome);
+};
+
+const createHomeContentSection = () => {
+	const section = createElementWithClass("div", "page-home__content");
+
+	section.classList.add("fade-in-from-left");
 
 	const heading = document.createElement("h1");
 	heading.innerHTML = `Enjoy Our <br /> Delicious Meal`;
@@ -22,35 +31,48 @@ const renderHome = () => {
 		"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eaque, asperiores cupiditate, esse ex tempora laborum iste illum quaerat alias atque quis, ipsam quasi ad dolorem consectetur porro deleniti a suscipit ea in eos odio.";
 
 	const button = document.createElement("button");
-	button.classList.add("btn");
+	button.classList.add("btn", "fade-in-from-left-delayed");
 	button.textContent = "our menu";
+	button.addEventListener("click", handleMenuButtonClick);
 
-	button.addEventListener("click", () => {
-		content.innerHTML = "";
-		renderMenu();
-	});
+	section.appendChild(heading);
+	section.appendChild(paragraph);
+	section.appendChild(button);
 
-	contentDiv.appendChild(heading);
-	contentDiv.appendChild(paragraph);
-	contentDiv.appendChild(button);
+	return section;
+};
 
-	const imageDiv = document.createElement("div");
-	imageDiv.classList.add("page-home__image");
+const createImageSection = () => {
+	const imageDiv = createElementWithClass("div", "page-home__image");
 
 	const img = document.createElement("img");
-	img.setAttribute("loading", "lazy");
 	img.src = image;
 	img.alt = "Restaurant image";
+	img.loading = "lazy";
+	img.classList.add("fade-in-opacity");
 
 	imageDiv.appendChild(img);
+	return imageDiv;
+};
 
-	container.appendChild(contentDiv);
-	container.appendChild(imageDiv);
-	pageHome.appendChild(container);
+const handleMenuButtonClick = () => {
+	const buttons = document.querySelectorAll("header button");
+	buttons.forEach((btn) => {
+		btn.classList.remove("active");
+		if (btn.textContent.trim().toLowerCase() === "menu") {
+			btn.classList.add("active");
+		}
+	});
 
+	const content = document.querySelector("#content");
 	content.innerHTML = "";
+	renderMenu();
+};
 
-	content.appendChild(pageHome);
+const createElementWithClass = (tag, className) => {
+	const el = document.createElement(tag);
+	el.classList.add(className);
+	return el;
 };
 
 export { renderHome };

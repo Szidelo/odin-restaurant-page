@@ -2,97 +2,111 @@ import "../styles/menu/menu.css";
 import coffeeIcon from "../assets/icons/coffee.svg";
 import burgerIcon from "../assets/icons/hamburger.svg";
 import silverwareIcon from "../assets/icons/silverware-fork-knife.svg";
+import createListByCategory from "../components/categoryList.js";
+import { FOOD } from "../utils/food";
+import { createPageBanner } from "../utils/helpers.js";
 
-import { FOOD, FOOD_CATEGORIES } from "../utils/food";
+const items = [
+	{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
+	{ label: "Special", category: "Launch", icon: burgerIcon },
+	{ label: "Lovely", category: "Dinner", icon: silverwareIcon },
+];
 
 const renderMenu = () => {
 	const content = document.querySelector("#content");
-	console.log(FOOD);
 	content.innerHTML = "";
 
-	const pageBanner = document.createElement("div");
-	pageBanner.classList.add("page-banner");
-	const bannerTitle = document.createElement("h1");
-	bannerTitle.textContent = "Food Menu";
-	pageBanner.appendChild(bannerTitle);
+	content.appendChild(createPageBanner("Food Menu"));
 
 	const pageMenu = document.createElement("div");
 	pageMenu.classList.add("page-menu", "fade-in");
 
-	const menuHeader = document.createElement("div");
-	menuHeader.classList.add("menu-header");
+	pageMenu.appendChild(createMenuHeader());
+	pageMenu.appendChild(createMenuContent());
+
+	content.appendChild(pageMenu);
+};
+
+const createMenuHeader = () => {
+	const header = document.createElement("div");
+	header.classList.add("menu-header");
 
 	const sectionTitle = document.createElement("h4");
 	sectionTitle.classList.add("section-title");
 	sectionTitle.textContent = "Food Menu";
 
-	const sectionHeading = document.createElement("h2");
-	sectionHeading.textContent = "Most Popular Items";
+	const heading = document.createElement("h2");
+	heading.textContent = "Most Popular Items";
 
-	menuHeader.appendChild(sectionTitle);
-	menuHeader.appendChild(sectionHeading);
+	header.appendChild(sectionTitle);
+	header.appendChild(heading);
+	return header;
+};
 
-	const menuContent = document.createElement("div");
-	menuContent.classList.add("menu-content");
+const createMenuContent = () => {
+	const content = document.createElement("div");
+	content.classList.add("menu-content");
 
 	const ul = document.createElement("ul");
 
-	const items = [
-		{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
-		{ label: "Special", category: "Launch", icon: burgerIcon },
-		{ label: "Lovely", category: "Dinner", icon: silverwareIcon },
-	];
-
-	items.forEach((item) => {
-		const li = document.createElement("li");
-
-		const iconDiv = document.createElement("div");
-		iconDiv.classList.add("icon-div");
-
-		// fetch and inject svg
-		fetchAndInlineSVG(item.icon, iconDiv);
-
-		const textDiv = document.createElement("div");
-		const label = document.createElement("h5");
-		label.textContent = item.label;
-		const category = document.createElement("h3");
-		category.textContent = item.category;
-
-		textDiv.appendChild(label);
-		textDiv.appendChild(category);
-		li.appendChild(iconDiv);
-		li.appendChild(textDiv);
+	items.forEach((item, index) => {
+		const li = createMenuItem(item);
+		if (index === 0) li.classList.add("active");
 		ul.appendChild(li);
-
-		li.addEventListener("click", handleItemClick);
 	});
 
-	const menuList = document.createElement("div");
-	menuList.classList.add("menu-list");
+	const listContainer = document.createElement("div");
+	listContainer.classList.add("menu-list");
+	const initialList = createListByCategory(items[0].category, FOOD);
 
-	menuContent.appendChild(ul);
-	menuContent.appendChild(menuList);
+	listContainer.appendChild(initialList);
 
-	pageMenu.appendChild(menuHeader);
-	pageMenu.appendChild(menuContent);
+	content.appendChild(ul);
+	content.appendChild(listContainer);
 
-	content.appendChild(pageBanner);
-	content.appendChild(pageMenu);
+	return content;
 };
 
-// fetch svg and inline it
-const fetchAndInlineSVG = async (url, target) => {
-	const res = await fetch(url);
-	const svgText = await res.text();
-	target.innerHTML = svgText;
+const createMenuItem = (item) => {
+	const li = document.createElement("li");
+
+	const iconDiv = document.createElement("div");
+	iconDiv.classList.add("icon-div");
+	fetchAndInlineSVG(item.icon, iconDiv);
+
+	const textDiv = document.createElement("div");
+	textDiv.innerHTML = `<h5>${item.label}</h5><h3>${item.category}</h3>`;
+
+	li.appendChild(iconDiv);
+	li.appendChild(textDiv);
+
+	li.addEventListener("click", handleItemClick);
+	return li;
 };
 
 const handleItemClick = (e) => {
-	const items = document.querySelectorAll(".menu-content li");
-	items.forEach((item) => {
-		item.classList.remove("active");
-	});
+	const allItems = document.querySelectorAll(".menu-content li");
+	allItems.forEach((item) => item.classList.remove("active"));
 	e.currentTarget.classList.add("active");
+
+	const category = e.currentTarget.querySelector("h3").textContent;
+	const menuList = document.querySelector(".menu-list");
+	menuList.innerHTML = "";
+
+	const newList = createListByCategory(category, FOOD);
+	newList.classList.add("fade-in-delayed");
+	menuList.appendChild(newList);
+};
+
+const fetchAndInlineSVG = async (url, target) => {
+	try {
+		const res = await fetch(url);
+		const svgText = await res.text();
+		target.innerHTML = svgText;
+	} catch (err) {
+		console.error("error fetching svg:", err);
+		return null;
+	}
 };
 
 export { renderMenu };
