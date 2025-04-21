@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { type } = require("os");
 const path = require("path");
 
 module.exports = {
@@ -13,13 +12,13 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./src/template.html",
-		})
+		}),
 	],
 	module: {
 		rules: [
 			{
 				test: /\.css$/i,
-				use: ["style-loader", "css-loader"]
+				use: ["style-loader", "css-loader"],
 			},
 			{
 				test: /\.html$/i,
@@ -28,11 +27,16 @@ module.exports = {
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: "asset/resource",
-			}
-		]
+			},
+			{
+				test: /\.svg$/i,
+				resourceQuery: /raw/, // only when ?raw is added
+				use: "raw-loader",
+			},
+		],
 	},
-	devtool: 'eval-source-map',
+	devtool: "eval-source-map",
 	devServer: {
-		watchFiles: ['./src/template.html']
-	}
+		watchFiles: ["./src/template.html"],
+	},
 };

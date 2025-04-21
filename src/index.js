@@ -5,5 +5,5 @@ import { renderHome } from "./scripts/home.js";
 import { renderMenu } from "./scripts/menu.js";
 
 renderHeader();
-// renderHome();
-renderMenu();
+renderHome();
+// renderMenu();

@@ -1,5 +1,6 @@
 import "../styles/home/home.css";
 import image from "../assets/images/dish-1.PNG";
+import { renderMenu } from "./menu";
 
 const renderHome = () => {
 	const content = document.querySelector("#content");
@@ -25,7 +26,8 @@ const renderHome = () => {
 	button.textContent = "our menu";
 
 	button.addEventListener("click", () => {
-		// go to menu page
+		content.innerHTML = "";
+		renderMenu();
 	});
 
 	contentDiv.appendChild(heading);
