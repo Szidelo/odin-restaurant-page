@@ -1,0 +1,43 @@
+.page-about {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    margin: 4rem auto;
+}
+
+.page-restaurant {
+    display: flex;
+}
+
+.restaurant-images, .restaurant-content {
+    width: 50%;
+}
+
+.restaurant-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.restaurant-images img {
+    width: calc(50% - 2rem);
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    
+}
+
+.restaurant-images img:nth-child(2), .restaurant-images img:nth-child(3) {
+    width: calc(50% - 5rem);
+    height: calc((50% - 5rem));
+    aspect-ratio: 1/1;
+}
+
+.restaurant-images img:nth-child(2) {
+    margin-top: auto;
+}
+
+.restaurant-images img:nth-child(3) {
+    margin-left: auto;
+}

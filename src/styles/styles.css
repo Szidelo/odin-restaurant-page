@@ -29,6 +29,7 @@ body {
 	transform: translate(-50%, -50%);
 	border-radius: 0.5rem;
 	border: none;
+	box-shadow: 0 10px 10px rgba(0,0,0,0.5);
 }
 
 .food-modal:focus {
@@ -102,8 +103,8 @@ body {
 
 .close-btn {
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 0.75rem;
+	right: 0.75rem;
 	border: none;
 	background-color: var(--light-color);
 	border-radius: 50%;
@@ -119,4 +120,14 @@ body {
 
 .close-btn:hover {
 	opacity: 1;
+}
+
+@media (max-width: 768px) {
+	.food-modal {
+		width: 90%;
+	}
+
+	.food-modal .food-modal-image-container {
+		width: 100%;
+	}
 }
