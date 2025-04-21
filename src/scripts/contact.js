@@ -1,4 +1,4 @@
-import { createPageBanner } from "../utils/helpers";
+import { createPageBanner } from "../components/pageBanner.js";
 import { createElementWithClass } from "../utils/helpers.js";
 
 const renderContact = () => {

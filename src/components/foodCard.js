@@ -1,3 +1,5 @@
+import { createElementWithClass } from "../utils/helpers";
+
 const createFoodCard = (foodItem) => {
 	const { id, name, price, image, description, category } = foodItem;
 
@@ -7,39 +9,46 @@ const createFoodCard = (foodItem) => {
 	card.setAttribute("data-category", category);
 	card.setAttribute("data-id", id);
 
-	const imageDiv = document.createElement("div");
-	imageDiv.classList.add("food-image");
+	const imageSection = createCardImage(image, name);
+	card.appendChild(imageSection);
 
+	const contentSection = createContentSection(name, price, description);
+	card.appendChild(contentSection);
+
+	return card;
+};
+
+const createCardImage = (image, name) => {
+	const imageDiv = createElementWithClass("div", "food-image");
 	const img = document.createElement("img");
 	img.src = image;
 	img.alt = name;
 	img.setAttribute("loading", "lazy");
 	imageDiv.appendChild(img);
-	card.appendChild(imageDiv);
 
-	const contentDiv = document.createElement("div");
-	contentDiv.classList.add("food-content");
+	return imageDiv;
+};
 
-	const titleAndPrice = document.createElement("div");
-	titleAndPrice.classList.add("title-and-price");
+const createContentSection = (name, price, description) => {
+	const contentDiv = createElementWithClass("div", "food-content");
+	const titleAndPrice = createElementWithClass("div", "title-and-price");
+
 	const title = document.createElement("h3");
 	title.textContent = name;
-	const priceTag = document.createElement("p");
-	priceTag.classList.add("price-tag");
+
+	const priceTag = createElementWithClass("p", "price-tag");
 	priceTag.textContent = `$${price.toFixed(2)}`;
+
+	const descriptionText = createElementWithClass("p", "description");
+	descriptionText.textContent = description;
 
 	titleAndPrice.appendChild(title);
 	titleAndPrice.appendChild(priceTag);
 	contentDiv.appendChild(titleAndPrice);
 
-	const descriptionText = document.createElement("p");
-	descriptionText.classList.add("description");
-	descriptionText.textContent = description;
-
 	contentDiv.appendChild(descriptionText);
-	card.appendChild(contentDiv);
 
-	return card;
+	return contentDiv;
 };
 
 export default createFoodCard;

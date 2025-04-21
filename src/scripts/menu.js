@@ -4,7 +4,7 @@ import burgerIcon from "../assets/icons/hamburger.svg";
 import silverwareIcon from "../assets/icons/silverware-fork-knife.svg";
 import createListByCategory from "../components/categoryList.js";
 import { FOOD } from "../utils/food";
-import { createPageBanner } from "../utils/helpers.js";
+import { createPageBanner } from "../components/pageBanner.js";
 
 const items = [
 	{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
