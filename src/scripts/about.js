@@ -1,6 +1,6 @@
 import "../styles/about/about.css";
 import { createPageBanner } from "../components/pageBanner.js";
-import { createElementWithClass, handleDelay } from "../utils/helpers.js";
+import { applyFadeIn, createElementWithClass, handleDelay } from "../utils/helpers.js";
 import image1 from "../assets/about/image-1.jpg";
 import image2 from "../assets/about/image-2.jpeg";
 import image3 from "../assets/about/image-3.jpg";
@@ -57,42 +57,28 @@ const createTextSection = () => {
 	const textDiv = createElementWithClass("div", "restaurant-text");
 
 	const titleDiv = createElementWithClass("div", "title-div");
-	titleDiv.classList.add("fade-in");
-
-	titleDiv.style.animationDelay = `${delay.getDelay()}s`;
-	delay.setDelay(0.15);
+	applyFadeIn(titleDiv, delay);
 
 	const sectionTitle = createElementWithClass("h4", "section-title");
 	sectionTitle.classList.add("section-title-about");
-	sectionTitle.classList.add("fade-in");
-	sectionTitle.style.animationDelay = `${delay.getDelay()}s`;
-	delay.setDelay(0.15);
 	sectionTitle.textContent = "About Us";
+	applyFadeIn(sectionTitle, delay);
 
 	const heading = document.createElement("h2");
 	heading.textContent = "Welcome to Odin Restaurant";
-	heading.classList.add("fade-in");
-	heading.style.animationDelay = `${delay.getDelay()}s`;
-	delay.setDelay(0.15);
+	applyFadeIn(heading, delay);
 
 	const text1 = document.createElement("p");
-	const text2 = document.createElement("p");
-
 	text1.textContent = TEXT_CONTENT.TEXT_1;
+	applyFadeIn(text1, delay);
+
+	const text2 = document.createElement("p");
 	text2.textContent = TEXT_CONTENT.TEXT_2;
+	applyFadeIn(text2, delay);
 
-	text1.classList.add("fade-in");
-	text1.style.animationDelay = `${delay.getDelay()}s`;
-	delay.setDelay(0.15);
-
-	text2.classList.add("fade-in");
-	text2.style.animationDelay = `${delay.getDelay()}s`;
-	delay.setDelay(0.15);
-
-	titleDiv.appendChild(sectionTitle);
-	titleDiv.appendChild(heading);
-	titleDiv.appendChild(text1);
-	titleDiv.appendChild(text2);
+	[sectionTitle, heading, text1, text2].forEach((el) => {
+		titleDiv.appendChild(el);
+	});
 
 	textDiv.appendChild(titleDiv);
 

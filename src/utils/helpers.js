@@ -20,11 +20,17 @@ export const createElementWithClass = (tag, className) => {
 export const handleDelay = () => {
 	let delay = 0;
 	const setDelay = (value) => {
-		const newDelay = (delay += value);
-		return newDelay;
+		delay += value;
 	};
 
 	const getDelay = () => delay;
 
 	return { setDelay, getDelay };
+};
+
+export const applyFadeIn = (element, delayHandler, delayTime, fadeType) => {
+	const fadeClass = fadeType ? fadeType : "fade-in";
+	element.classList.add(fadeClass);
+	element.style.animationDelay = `${delayHandler.getDelay()}s`;
+	delayHandler.setDelay(delayTime ? delayTime : 0.15);
 };
