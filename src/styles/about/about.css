@@ -41,3 +41,34 @@
 .restaurant-images img:nth-child(3) {
     margin-left: auto;
 }
+
+.section-title.section-title-about {
+    width: fit-content;
+}
+
+.section-title.section-title-about::before {
+    display: none;
+}
+
+.restaurant-text, .cta-div {
+    padding: 1rem 2rem;
+}
+
+.title-div h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.title-div p {
+    color: var(--grey-color);
+    margin: 2rem 0;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.cta-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

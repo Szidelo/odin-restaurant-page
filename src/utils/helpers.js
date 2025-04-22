@@ -16,3 +16,15 @@ export const createElementWithClass = (tag, className) => {
 	el.classList.add(className);
 	return el;
 };
+
+export const handleDelay = () => {
+	let delay = 0;
+	const setDelay = (value) => {
+		const newDelay = (delay += value);
+		return newDelay;
+	};
+
+	const getDelay = () => delay;
+
+	return { setDelay, getDelay };
+};
