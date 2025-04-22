@@ -5,6 +5,7 @@ import image1 from "../assets/about/image-1.jpg";
 import image2 from "../assets/about/image-2.jpeg";
 import image3 from "../assets/about/image-3.jpg";
 import image4 from "../assets/about/image-4.jpg";
+import { renderMenu } from "./menu.js";
 
 const TEXT_CONTENT = {
 	TEXT_1: "Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.",
@@ -41,9 +42,8 @@ const createImageSection = () => {
 		const img = document.createElement("img");
 		img.src = image;
 		img.setAttribute("loading", "lazy");
-		img.classList.add("fade-in");
-		img.style.animationDelay = `${delay.getDelay()}s`;
-		delay.setDelay(0.15);
+		applyFadeIn(img, delay);
+
 		imageDiv.appendChild(img);
 	});
 
@@ -65,7 +65,7 @@ const createTextSection = () => {
 	applyFadeIn(sectionTitle, delay);
 
 	const heading = document.createElement("h2");
-	heading.textContent = "Welcome to Odin Restaurant";
+	heading.textContent = "Welcome to Odin's Restaurant";
 	applyFadeIn(heading, delay);
 
 	const text1 = document.createElement("p");
@@ -87,11 +87,95 @@ const createTextSection = () => {
 
 const createCtaSection = () => {
 	const ctaDiv = createElementWithClass("div", "cta-div");
+	const delay = handleDelay();
+	delay.setDelay(0.9);
 
-	const experienceDiv = createElementWithClass("div", "exp-div");
+	const infoDiv = createElementWithClass("div", "info-div");
 
-	ctaDiv.appendChild(experienceDiv);
+	const experienceDiv = createExperienceDiv();
+	applyFadeIn(experienceDiv, delay);
+	infoDiv.appendChild(experienceDiv);
+
+	const bestChefsDiv = createBestChefsDiv();
+	applyFadeIn(bestChefsDiv, delay);
+	infoDiv.appendChild(bestChefsDiv);
+
+	const ctaButton = createCtaButton();
+	applyFadeIn(ctaButton, delay);
+	ctaDiv.appendChild(ctaButton);
+
+	ctaDiv.appendChild(infoDiv);
 	return ctaDiv;
+};
+
+const createExperienceDiv = () => {
+	const experienceDiv = createElementWithClass("div", "experience-div");
+
+	const number = document.createElement("h1");
+
+	for (let i = 0; i <= 20; i++) {
+		setTimeout(() => {
+			number.textContent = i;
+		}, i * 100);
+	}
+
+	const textDiv = createElementWithClass("div", "info");
+	const p = document.createElement("p");
+	p.textContent = "Years of";
+	const h4 = document.createElement("h4");
+	h4.textContent = "Experience";
+
+	textDiv.appendChild(p);
+	textDiv.appendChild(h4);
+
+	experienceDiv.appendChild(number);
+	experienceDiv.appendChild(textDiv);
+
+	return experienceDiv;
+};
+
+const createBestChefsDiv = () => {
+	const bestChefsDiv = createElementWithClass("div", "best-chefs-div");
+
+	const number = document.createElement("h1");
+
+	for (let i = 0; i <= 50; i++) {
+		setTimeout(() => {
+			number.textContent = i;
+		}, i * 40);
+	}
+
+	const textDiv = createElementWithClass("div", "info");
+	const p = document.createElement("p");
+	p.textContent = "Popular";
+	const h4 = document.createElement("h4");
+	h4.textContent = "Master Chefs";
+
+	textDiv.appendChild(p);
+	textDiv.appendChild(h4);
+
+	bestChefsDiv.appendChild(number);
+	bestChefsDiv.appendChild(textDiv);
+
+	return bestChefsDiv;
+};
+
+const createCtaButton = () => {
+	const button = document.createElement("button");
+	button.classList.add("btn");
+	button.textContent = "our menu";
+	button.addEventListener("click", () => {
+		const buttons = document.querySelectorAll("header button");
+		buttons.forEach((btn) => {
+			btn.classList.remove("active");
+			if (btn.textContent.trim().toLowerCase() === "menu") {
+				btn.classList.add("active");
+				renderMenu();
+			}
+		});
+	});
+
+	return button;
 };
 
 const createRestaurantContent = () => {

@@ -1,74 +1,125 @@
 .page-about {
-    display: flex;
-    flex-direction: column;
-    max-width: 1440px;
-    margin: 4rem auto;
+	display: flex;
+	flex-direction: column;
+	max-width: 1440px;
+	margin: 4rem auto;
 }
 
 .page-restaurant {
-    display: flex;
+	display: flex;
 }
 
-.restaurant-images, .restaurant-content {
-    width: 50%;
+.restaurant-images,
+.restaurant-content {
+	width: 50%;
 }
 
 .restaurant-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
 .restaurant-images img {
-    width: calc(50% - 2rem);
-    height: auto;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
-    
+	width: calc(50% - 2rem);
+	height: auto;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-.restaurant-images img:nth-child(2), .restaurant-images img:nth-child(3) {
-    width: calc(50% - 5rem);
-    height: calc((50% - 5rem));
-    aspect-ratio: 1/1;
+.restaurant-images img:nth-child(2),
+.restaurant-images img:nth-child(3) {
+	width: calc(50% - 5rem);
+	height: calc((50% - 5rem));
+	aspect-ratio: 1/1;
 }
 
 .restaurant-images img:nth-child(2) {
-    margin-top: auto;
+	margin-top: auto;
 }
 
 .restaurant-images img:nth-child(3) {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .section-title.section-title-about {
-    width: fit-content;
+	width: fit-content;
 }
 
 .section-title.section-title-about::before {
-    display: none;
+	display: none;
 }
 
-.restaurant-text, .cta-div {
-    padding: 1rem 2rem;
+.restaurant-text,
+.cta-div {
+	padding: 1rem 2rem;
 }
 
 .title-div h2 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    font-weight: 800;
+	color: var(--primary-color);
+	font-size: 2.5rem;
+	font-weight: 800;
 }
 
 .title-div p {
-    color: var(--grey-color);
-    margin: 2rem 0;
-    font-weight: 400;
-    font-size: 1rem;
+	color: var(--grey-color);
+	margin: 2rem 0;
+	font-weight: 400;
+	font-size: 1rem;
 }
 
 .cta-div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 2rem;
+	width: 100%;
+}
+
+.info-div {
+	display: flex;
+	align-items: center;
+	margin: 0.5rem 0;
+}
+
+.experience-div,
+.best-chefs-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	border-left: 5px solid var(--accent-color);
+}
+
+.experience-div h1,
+.best-chefs-div h1 {
+	font-size: 4rem;
+	font-weight: 900;
+	padding-left: 1.5rem;
+	color: var(--accent-color);
+}
+
+.experience-div .info,
+.best-chefs-div .info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	padding-left: 1.5rem;
+}
+
+.info p {
+	font-size: 1rem;
+	color: var(--grey-color);
+	font-weight: 400;
+	margin: 0;
+}
+
+.info h4 {
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 800;
+	color: var(--text-color);
 }
