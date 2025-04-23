@@ -6,6 +6,8 @@ import image2 from "../assets/about/image-2.jpeg";
 import image3 from "../assets/about/image-3.jpg";
 import image4 from "../assets/about/image-4.jpg";
 import { renderMenu } from "./menu.js";
+import { CHEFS } from "../utils/chefs.js";
+import { createChefCard } from "../components/chefCard.js";
 
 const TEXT_CONTENT = {
 	TEXT_1: "Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.",
@@ -21,7 +23,10 @@ const renderAbout = () => {
 	const aboutPage = createElementWithClass("div", "page-about");
 	const restaurantSection = createRestaurantSection();
 
+	const chefsSection = createChefsSection();
+
 	aboutPage.appendChild(restaurantSection);
+	aboutPage.appendChild(chefsSection);
 
 	content.appendChild(aboutPage);
 };
@@ -32,6 +37,7 @@ const createRestaurantSection = () => {
 	restaurantSection.appendChild(imageDiv);
 	const contentDiv = createRestaurantContent();
 	restaurantSection.appendChild(contentDiv);
+
 	return restaurantSection;
 };
 
@@ -185,6 +191,38 @@ const createRestaurantContent = () => {
 	restaurantContent.appendChild(createCtaSection());
 
 	return restaurantContent;
+};
+
+const createChefsSection = () => {
+	const delay = handleDelay();
+	delay.setDelay(1);
+
+	const chefsSection = createElementWithClass("div", "chefs-section");
+	const chefsHeader = createElementWithClass("div", "chefs-header");
+	applyFadeIn(chefsHeader, delay);
+
+	const sectionTitle = createElementWithClass("h4", "section-title");
+	sectionTitle.textContent = "Team Members";
+	applyFadeIn(sectionTitle, delay);
+
+	const heading = document.createElement("h2");
+	heading.textContent = "Our Master Chefs";
+	applyFadeIn(heading, delay);
+
+	[sectionTitle, heading].forEach((el) => chefsHeader.appendChild(el));
+
+	const itemList = createElementWithClass("div", "chef-list");
+
+	CHEFS.forEach((chef) => {
+		const chefCard = createChefCard(chef);
+		applyFadeIn(chefCard, delay);
+		itemList.appendChild(chefCard);
+	});
+
+	chefsSection.appendChild(chefsHeader);
+	chefsSection.appendChild(itemList);
+
+	return chefsSection;
 };
 
 export { renderAbout };

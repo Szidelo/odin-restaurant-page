@@ -1,3 +1,4 @@
+import { applyFadeIn, handleDelay } from "../utils/helpers.js";
 import createFoodCard from "./foodCard.js";
 
 const createListByCategory = (category, food) => {
@@ -5,16 +6,12 @@ const createListByCategory = (category, food) => {
 	grid.innerHTML = "";
 	grid.classList.add("category-grid");
 
-	let delay = 0;
+	const delay = handleDelay();
 
 	food.forEach((foodItem) => {
 		if (foodItem.category === category) {
 			const foodCard = createFoodCard(foodItem);
-
-			foodCard.classList.add("fade-in");
-			foodCard.style.animationDelay = `${delay}s`;
-			delay += 0.15; // adjust delay per card
-
+			applyFadeIn(foodCard, delay);
 			grid.appendChild(foodCard);
 		}
 	});

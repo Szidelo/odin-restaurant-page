@@ -5,7 +5,7 @@ import silverwareIcon from "../assets/icons/silverware-fork-knife.svg";
 import createListByCategory from "../components/categoryList.js";
 import { FOOD } from "../utils/food";
 import { createPageBanner } from "../components/pageBanner.js";
-import { createElementWithClass } from "../utils/helpers.js";
+import { createElementWithClass, fetchAndInlineSVG } from "../utils/helpers.js";
 
 const items = [
 	{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
@@ -90,17 +90,6 @@ const handleItemClick = (e) => {
 	const newList = createListByCategory(category, FOOD);
 	newList.classList.add("fade-in-delayed");
 	menuList.appendChild(newList);
-};
-
-const fetchAndInlineSVG = async (url, target) => {
-	try {
-		const res = await fetch(url);
-		const svgText = await res.text();
-		target.innerHTML = svgText;
-	} catch (err) {
-		console.error("error fetching svg:", err);
-		return null;
-	}
 };
 
 export { renderMenu };
