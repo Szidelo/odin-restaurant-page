@@ -11,9 +11,10 @@ export const getImage = (name) => {
 	}
 };
 
-export const createElementWithClass = (tag, className) => {
+export const createElementWithClass = (tag, ...classNames) => {
 	const el = document.createElement(tag);
-	el.classList.add(className);
+
+	el.classList.add(...classNames);
 	return el;
 };
 
