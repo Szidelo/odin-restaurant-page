@@ -4,13 +4,17 @@ import instagramIcon from "../assets/icons/instagram.svg";
 import linkedinIcon from "../assets/icons/linkedin.svg";
 
 export const createChefCard = (data) => {
-	const delay = handleDelay();
 	const card = createElementWithClass("div", "chef-card");
+
+	const imgDiv = createElementWithClass("div", "chef-image-div");
 
 	const img = createElementWithClass("img", "chef-image");
 	img.src = data.image;
 	img.alt = data.name;
-	card.appendChild(img);
+
+	imgDiv.appendChild(img);
+
+	card.appendChild(imgDiv);
 
 	const info = createElementWithClass("div", "chef-info");
 

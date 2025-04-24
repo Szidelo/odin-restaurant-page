@@ -145,31 +145,40 @@
 	display: flex;
 	justify-content: space-around;
 	margin: 4rem 0;
+	height: 27.75rem;
 }
 
 .chef-card {
 	width: 20rem;
-	height: 23rem;
+	height: 24.75rem;
 	border-radius: 0.5rem;
-	padding: 2rem;
-	overflow: hidden;
+	padding: 2rem 2rem 0;
 	text-align: center;
 	box-shadow: 0 2px 500px rgba(0, 0, 0, 0.1);
 	overflow-y: hidden;
 }
 
 .chef-card:hover {
-	height: 28.75rem;
+	height: 27.75rem;
 }
 
-.chef-image {
+.chef-image-div {
+	overflow: hidden;
+}
+
+.chef-image,
+.chef-image-div {
 	width: 100%;
 	height: auto;
 	border-radius: 50%;
 }
 
+.chef-card:hover .chef-image {
+	scale: 1.15;
+}
+
 .chef-info {
-	padding: 10px;
+	padding: 1rem;
 }
 
 .chef-name {
@@ -178,21 +187,28 @@
 }
 
 .chef-designation {
-	margin: 4px 0 0;
-	color: #666;
+	margin: 0.25rem 0 0;
+	color: var(--grey-color);
 }
 
 .chef-socials {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
-	padding: 10px;
+	gap: 1rem;
+	padding: 1rem 1rem 0;
+}
+
+.chef-socials a {
+	border-radius: 2rem 2rem 0 0;
+	padding: 0 0.25rem;
+	background-color: var(--accent-color);
 }
 
 .chef-socials a svg {
-	width: 2rem;
-	height: 2rem;
-	fill: var(--accent-color);
+	width: 1.85rem;
+	height: 100%;
+	padding: 0.5rem 0;
+	fill: var(--light-color);
 }
 
 .chef-socials a svg:hover {
