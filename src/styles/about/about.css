@@ -125,7 +125,7 @@
 }
 
 .chefs-section {
-	margin: 4rem 0;
+	margin: 4rem 0 0;
 }
 
 .chefs-header {
@@ -150,7 +150,7 @@
 
 .chef-card {
 	width: 20rem;
-	height: 24.75rem;
+	height: calc(100% - 4rem);
 	border-radius: 0.5rem;
 	padding: 2rem 2rem 0;
 	text-align: center;
@@ -159,7 +159,7 @@
 }
 
 .chef-card:hover {
-	height: 27.75rem;
+	height: 100%;
 }
 
 .chef-image-div {
@@ -196,6 +196,7 @@
 	justify-content: center;
 	gap: 1rem;
 	padding: 1rem 1rem 0;
+	height: 4rem;
 }
 
 .chef-socials a {
@@ -213,4 +214,46 @@
 
 .chef-socials a svg:hover {
 	fill: var(--primary-color);
+}
+
+@media (max-width: 760px) {
+	.page-restaurant {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.restaurant-images,
+	.restaurant-content {
+		width: 100%;
+		padding: 0 1.5rem;
+	}
+
+	.restaurant-text {
+		padding-top: 1.5rem;
+	}
+
+	.restaurant-text,
+	.cta-div {
+		padding: 0;
+	}
+
+	.info-div {
+		flex-direction: column;
+	}
+
+	.chef-list {
+		flex-direction: column;
+		height: auto;
+		gap: 1rem;
+	}
+
+	.chef-card {
+		width: 90%;
+		/* height: 32rem; */
+		margin: 0 auto;
+	}
+
+	.chef-card:hover {
+		/* height: 35.5rem; */
+	}
 }
