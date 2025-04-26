@@ -249,11 +249,6 @@
 
 	.chef-card {
 		width: 90%;
-		/* height: 32rem; */
 		margin: 0 auto;
-	}
-
-	.chef-card:hover {
-		/* height: 35.5rem; */
 	}
 }

@@ -6,6 +6,7 @@ import createListByCategory from "../components/categoryList.js";
 import { FOOD } from "../utils/food";
 import { createPageBanner } from "../components/pageBanner.js";
 import { createElementWithClass, fetchAndInlineSVG } from "../utils/helpers.js";
+import { renderFooter } from "./footer.js";
 
 const items = [
 	{ label: "Popular", category: "Breakfast", icon: coffeeIcon },
@@ -26,6 +27,10 @@ const renderMenu = () => {
 	pageMenu.appendChild(createMenuContent());
 
 	content.appendChild(pageMenu);
+
+	const footer = renderFooter();
+
+	content.appendChild(footer);
 };
 
 const createMenuHeader = () => {

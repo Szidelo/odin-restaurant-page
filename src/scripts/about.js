@@ -8,6 +8,7 @@ import image4 from "../assets/about/image-4.jpg";
 import { renderMenu } from "./menu.js";
 import { CHEFS } from "../utils/chefs.js";
 import { createChefCard } from "../components/chefCard.js";
+import { renderFooter } from "./footer.js";
 
 const TEXT_CONTENT = {
 	TEXT_1: "Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.",
@@ -29,6 +30,10 @@ const renderAbout = () => {
 	aboutPage.appendChild(chefsSection);
 
 	content.appendChild(aboutPage);
+
+	const footer = renderFooter();
+
+	content.appendChild(footer);
 };
 
 const createRestaurantSection = () => {

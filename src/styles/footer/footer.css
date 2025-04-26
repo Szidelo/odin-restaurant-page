@@ -1,0 +1,150 @@
+footer {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	max-width: 1440px;
+	margin: 0 auto;
+	background-color: var(--primary-color);
+	padding: 2rem;
+}
+
+.footer-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.footer-menu h4,
+.footer-contact h4,
+.footer-openeing h4,
+.footer-newsletter h4 {
+	width: min-content;
+}
+
+.footer-menu h4::before,
+.footer-contact h4::before,
+.footer-openeing h4::before,
+.footer-newsletter h4::before {
+	display: none;
+}
+
+.footer-nav {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.footer-link button {
+	background-color: transparent;
+	text-transform: capitalize;
+	border: none;
+	color: var(--light-color);
+	cursor: pointer;
+}
+
+.footer-link button:hover {
+	letter-spacing: 0.2rem;
+	color: var(--accent-color);
+}
+
+.footer-link button::before {
+	content: ">";
+	margin-right: 1rem;
+}
+
+.footer-address-div {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.address-item {
+	display: flex;
+	gap: 1rem;
+}
+
+.address-item svg {
+	width: 1rem;
+	fill: var(--light-color);
+}
+
+.address-item p {
+	color: var(--light-color);
+}
+
+.footer-socials {
+	margin-top: 1rem;
+	display: flex;
+	gap: 1rem;
+}
+
+.footer-socials div svg {
+	width: 2.5rem;
+	fill: var(--light-color);
+	border: 1px solid var(--light-color);
+	border-radius: 50%;
+	padding: 0.5rem;
+	cursor: pointer;
+}
+
+.footer-socials div svg:hover {
+	fill: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+.footer-openeing {
+	display: flex;
+	flex-direction: column;
+}
+
+.opening-item {
+	color: var(--light-color);
+	margin-top: 1rem;
+}
+
+.opening-item:first-of-type {
+	margin-top: 2rem;
+}
+
+.opening-item h5 {
+	font-size: 1.4rem;
+	margin-bottom: 0.25rem;
+}
+
+.footer-newsletter {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-newsletter p {
+	margin-top: 2rem;
+	color: var(--light-color);
+}
+
+.input-container {
+	position: relative;
+	margin-top: 2rem;
+}
+
+.input-container input {
+	padding: 1rem;
+	border-radius: 0.25rem;
+	width: 100%;
+}
+
+.input-container .news-btn {
+	position: absolute;
+	height: 90%;
+	top: 50%;
+	right: 0.25rem;
+	transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+	footer {
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+	}
+}
