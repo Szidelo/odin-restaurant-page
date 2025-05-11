@@ -146,5 +146,6 @@ footer {
 	footer {
 		grid-template-columns: 1fr;
 		row-gap: 2rem;
+		width: 100%;
 	}
 }
