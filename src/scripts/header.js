@@ -6,18 +6,39 @@ import { NAV_ITEMS } from "../utils/constants.js";
 import { renderContact } from "./contact.js";
 import { renderAbout } from "./about.js";
 
+const createBurger = () => {
+	const burger = document.createElement("div");
+	burger.classList.add("burger");
+
+	for (let i = 0; i < 3; i++) {
+		const line = document.createElement("span");
+		line.classList.add("line");
+		burger.appendChild(line);
+	}
+
+	burger.addEventListener("click", () => {
+		burger.classList.toggle("active");
+		document.querySelector("nav").classList.toggle("nav-active");
+	});
+
+	return burger;
+};
+
 const renderHeader = () => {
 	const header = document.createElement("header");
 	const nav = document.createElement("nav");
 	const ul = document.createElement("ul");
 	const logoContainer = document.createElement("div");
 	const logo = document.createElement("a");
+	const burger = createBurger();
+
 	logoContainer.classList.add("logo-container");
 	logo.textContent = "odin's restaurant";
 	logo.href = "/";
 
 	logoContainer.appendChild(logo);
 	nav.appendChild(logoContainer);
+	nav.appendChild(burger);
 
 	Object.values(NAV_ITEMS).forEach((item, i) => {
 		const li = document.createElement("li");
@@ -26,17 +47,13 @@ const renderHeader = () => {
 		li.appendChild(btn);
 		ul.appendChild(li);
 
-		if (i === 0) {
-			btn.classList.add("active");
-		}
+		if (i === 0) btn.classList.add("active");
 
 		btn.addEventListener("click", changeActive);
 	});
 
 	nav.appendChild(ul);
-
 	header.appendChild(nav);
-
 	document.querySelector("body").prepend(header);
 };
 
@@ -67,6 +84,9 @@ const changePage = (e) => {
 			break;
 		case CONTACT:
 			renderContact();
+			break;
+		default:
+			renderHome();
 			break;
 	}
 };
